@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+
+import ThemeImage from "@/components/ui/theme-image";
 import Reveal from "@/components/ui/reveal";
 
 const index = () => {
@@ -7,18 +9,19 @@ const index = () => {
       <div aria-hidden="true" className="hero-orb hero-orb-one" />
       <div aria-hidden="true" className="hero-orb hero-orb-two" />
       <div className="container">
-        <div className="lg:flex grid grid-cols-1 sm:grid-cols-2 gap-7 md:gap-4 items-center">
+        <div className="grid grid-cols-1 items-center gap-7 sm:grid-cols-2 md:gap-4 lg:flex">
           <Reveal className="flex max-w-2xl flex-col gap-4 md:gap-7">
             <div>
-              <div className="flex items-center gap-8">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-5 lg:gap-8">
                 <h1>I'm Hariharan</h1>
                 <div className="wave">
-                  <Image
+                  <ThemeImage
                     src={"/images/home/banner/wave-icon.svg"}
+                    darkSrc={"/images/home/banner/wave-icon-dark.svg"}
                     alt="wave-icon"
                     width={62}
                     height={62}
-                    className=""
+                    className="size-10 sm:size-12 lg:size-[62px]"
                   />
                 </div>
               </div>

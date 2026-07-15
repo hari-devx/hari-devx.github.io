@@ -1,41 +1,88 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
+
+const CODE_LINES = [
+  "const portfolio = await build();",
+  "experience.map(shipProduct);",
+  "deploy({ status: 'ready' });",
+];
 
 export default function InitialLoader() {
   const [isVisible, setIsVisible] = useState(true);
   const [isLeaving, setIsLeaving] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const dismiss = () => {
+    const duration = document.readyState === "complete" ? 1200 : 1800;
+    const startedAt = Date.now();
+    const dismissTimer = window.setTimeout(() => {
+      setProgress(100);
       setIsLeaving(true);
       window.setTimeout(() => setIsVisible(false), 450);
-    };
-    const timer = window.setTimeout(dismiss, document.readyState === "complete" ? 1500 : 1900);
+    }, duration);
 
-    return () => window.clearTimeout(timer);
+    const progressTimer = window.setInterval(() => {
+      const elapsed = Date.now() - startedAt;
+      const nextProgress = Math.min(100, Math.round((elapsed / duration) * 100));
+      setProgress(nextProgress);
+      if (nextProgress === 100) window.clearInterval(progressTimer);
+    }, 50);
+
+    return () => {
+      window.clearTimeout(dismissTimer);
+      window.clearInterval(progressTimer);
+    };
   }, []);
 
   if (!isVisible) return null;
 
   return (
-    <div className={`initial-loader ${isLeaving ? "initial-loader--leave" : ""}`} role="status" aria-label="Loading portfolio">
-      <div className="loader-scene" aria-hidden="true">
-        <div className="loader-grid" />
-        <div className="loader-code-card"><span>&lt;/&gt;</span><i /><i /><i /><i /></div>
-        <div className="loader-hologram"><div className="loader-hologram-head"><span>SYS.ARCH</span><b>LIVE</b></div><i /><i /><i /><i /><i /></div>
-        <div className="loader-laptop">
-          <div className="loader-screen"><div className="loader-screen-glow" /><span>const portfolio = &#123;</span><span className="loader-code-indent">engineer: "Hariharan",</span><span className="loader-code-indent">status: "building"</span><span>&#125;;</span></div>
-          <div className="loader-keyboard"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
+    <div
+      className={`initial-loader initial-loader--boot ${isLeaving ? "initial-loader--leave" : ""}`}
+      role="status"
+      aria-live="polite"
+      aria-label={`Preparing portfolio, ${progress}% complete`}
+    >
+      <div className="boot-loader" aria-hidden="true">
+        <div className="boot-loader__scene">
+          <div className="boot-loader__halo" />
+          <div className="boot-loader__laptop">
+            <div className="boot-loader__screen">
+              <div className="boot-loader__screen-bar">
+                <span /><span /><span />
+              </div>
+              <div className="boot-loader__code">
+                {CODE_LINES.map((line, index) => (
+                  <span key={line} style={{ "--line": index } as CSSProperties}>{line}</span>
+                ))}
+              </div>
+              <div className="boot-loader__scan" />
+            </div>
+            <div className="boot-loader__keyboard">
+              {Array.from({ length: 24 }, (_, index) => <i key={index} />)}
+            </div>
+          </div>
+          <div className="boot-loader__panel">
+            <span className="boot-loader__panel-label">SYSTEM</span>
+            <strong>ONLINE</strong>
+            <i /><i /><i />
+          </div>
+          <span className="boot-loader__node boot-loader__node--one" />
+          <span className="boot-loader__node boot-loader__node--two" />
         </div>
-        <div className="loader-orbit loader-orbit-one" />
-        <div className="loader-orbit loader-orbit-two" />
-        <div className="loader-node loader-node-one" /><div className="loader-node loader-node-two" /><div className="loader-node loader-node-three" />
-      </div>
-      <div className="loader-copy">
-        <p className="loader-eyebrow">portfolio · 2026</p>
-        <h1>Initializing systems</h1>
-        <div className="loader-progress"><span /></div>
+
+        <div className="boot-loader__copy">
+          <p>DEVELOPER PORTFOLIO</p>
+          <h1>Preparing the experience</h1>
+          <div className="boot-loader__progress" aria-hidden="true">
+            <span style={{ width: `${progress}%` }} />
+          </div>
+          <div className="boot-loader__meta">
+            <span>INITIALIZING</span>
+            <span>{String(progress).padStart(2, "0")}%</span>
+          </div>
+        </div>
       </div>
     </div>
   );

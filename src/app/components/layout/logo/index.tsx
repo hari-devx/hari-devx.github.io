@@ -1,11 +1,13 @@
-import Image from "next/image"
+"use client"
+
 import Link from "next/link"
+import ThemeImage from "@/components/ui/theme-image"
 
 const Logo = () => {
   return (
     <>
         <Link href="/">
-            <Image src={"/images/logo/h.svg"} alt="logo" width={140} height={200}/>
+            <ThemeImage src={"/images/logo/h.svg"} darkSrc={"/images/logo/h-dark.svg"} alt="Hariharan logo" width={64} height={64} className="size-20 sm:size-14 lg:size-30" priority />
         </Link>
     </>
   )

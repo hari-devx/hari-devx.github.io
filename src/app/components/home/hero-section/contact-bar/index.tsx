@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import ThemeImage from "@/components/ui/theme-image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -27,23 +27,24 @@ const ContactBar = () => {
         <div className="container">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 md:py-7">
             {/* Contact Items */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 md:gap-5 lg:gap-11">
+            <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center md:justify-start md:gap-5 lg:gap-11">
               {contactBarData?.contactItems?.map(
                 (value: any, index: number) => (
                   <Link
                     key={index}
                     href={value?.link}
-                    className="flex items-center gap-2 lg:gap-4 text-sm md:text-base"
+                    className="flex min-w-0 items-center gap-2 text-sm sm:text-base lg:gap-4"
                   >
-                    <Image
+                    <ThemeImage
                       src={value?.icon}
+                      darkSrc={value?.icon?.replace(".svg", "-dark.svg")}
                       alt={value?.type}
                       width={24}
                       height={24}
                       className="min-w-[24px] min-h-[24px]"
                     />
 
-                    <h6 className="text-sm md:text-base xl:text-xl hover:text-primary">
+                    <h6 className="break-all text-sm hover:text-primary md:text-base xl:text-xl">
                       {value?.label}
                     </h6>
                   </Link>
@@ -52,11 +53,12 @@ const ContactBar = () => {
             </div>
 
             {/* Social Items */}
-            <div className="flex items-center justify-center md:justify-end gap-4 md:gap-2.5">
+            <div className="flex items-center justify-center gap-4 md:justify-end md:gap-2.5">
               {contactBarData?.socialItems?.map((value: any, index: number) => (
                 <Link key={index} href={value?.link}>
-                  <Image
+                  <ThemeImage
                     src={value?.icon}
+                    darkSrc={value?.icon?.replace(".svg", "-dark.svg")}
                     alt={value?.platform}
                     width={30}
                     height={30}

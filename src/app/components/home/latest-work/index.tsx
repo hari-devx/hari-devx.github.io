@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import ThemeImage from "@/components/ui/theme-image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -79,8 +80,9 @@ const LatestWork = () => {
                         <Link href={`${value.slug}`}>
                           <h5>{value?.title}</h5>
                         </Link>
-                        <Image
+                        <ThemeImage
                           src={"/images/icon/right-arrow-icon.svg"}
+                          darkSrc={"/images/icon/right-arrow-icon-dark.svg"}
                           alt="right-arrow-icon"
                           width={30}
                           height={30}

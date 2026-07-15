@@ -50,24 +50,24 @@ const educationData = {
   ],
   skills: [
     {
-      title: "Backend Architecture",
-      description: "Designing maintainable services with clear contracts, resilience, and operational ownership.",
-      technologies: ["Java", "Spring Boot", "Microservices", "REST APIs"]
+      title: "Backend & Platform Engineering",
+      description: "Building secure, maintainable backend platforms with well-defined domain boundaries, API contracts, and production-ready service ownership.",
+      technologies: ["Java", "Spring Boot", "Microservices", "REST APIs", "SQL", "Git"]
     },
     {
-      title: "Event-Driven Systems",
-      description: "Building responsive integrations and real-time workflows for connected platforms.",
-      technologies: ["Apache Kafka", "RabbitMQ", "WebSocket", "MQTT"]
+      title: "System Design & Architecture",
+      description: "Translating product requirements into scalable designs, balancing latency, reliability, data consistency, observability, and operational complexity.",
+      technologies: ["High-Level Design", "Low-Level Design", "API Design", "Caching", "Database Design", "Scalability"]
     },
     {
-      title: "Cloud & Delivery",
-      description: "Shipping reliable workloads through repeatable infrastructure and delivery practices.",
-      technologies: ["AWS EC2", "Docker", "Jenkins", "Git", "Bitbucket"]
+      title: "Distributed & Event-Driven Systems",
+      description: "Designing asynchronous workflows and resilient integrations that decouple services and support reliable, real-time data movement.",
+      technologies: ["Apache Kafka", "RabbitMQ", "WebSocket", "MQTT", "Idempotency", "Retries & DLQs"]
     },
     {
-      title: "Engineering Foundations",
-      description: "Applying sound problem-solving, debugging, and system-level reasoning to production work.",
-      technologies: ["Data Structures & Algorithms"]
+      title: "Cloud Reliability & Delivery",
+      description: "Shipping dependable services through repeatable delivery practices, containerization, production troubleshooting, and infrastructure-aware engineering.",
+      technologies: ["AWS EC2", "Docker", "Jenkins", "CI/CD", "Monitoring", "Incident Debugging"]
     }
   ]
 }

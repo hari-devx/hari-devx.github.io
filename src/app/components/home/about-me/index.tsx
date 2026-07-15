@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import ThemeImage from "@/components/ui/theme-image";
 import { Badge } from "@/components/ui/badge";
 import Reveal from "@/components/ui/reveal";
 
@@ -63,8 +64,9 @@ const AboutMe = () => {
 
                 <div className="flex flex-col items-start gap-4 pt-8 sm:flex-row sm:items-center xl:pt-12">
                   <div className="flex items-center gap-3.5">
-                    <Image
+                    <ThemeImage
                       src="/images/icon/lang-icon.svg"
+                      darkSrc="/images/icon/lang-icon-dark.svg"
                       alt="lang-icon"
                       width={30}
                       height={30}
