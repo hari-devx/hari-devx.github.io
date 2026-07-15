@@ -33,7 +33,7 @@ export default function InitialLoader() {
         <div className="loader-node loader-node-one" /><div className="loader-node loader-node-two" /><div className="loader-node loader-node-three" />
       </div>
       <div className="loader-copy">
-        <p className="loader-eyebrow">Engineering portfolio · 2026</p>
+        <p className="loader-eyebrow">portfolio · 2026</p>
         <h1>Initializing systems</h1>
         <div className="loader-progress"><span /></div>
       </div>

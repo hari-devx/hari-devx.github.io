@@ -12,7 +12,7 @@ const bricolageGrotesque = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Hari Portfolio",
+  title: "Portfolio",
   description: "By Hari.Dev",
   icons: {
     icon: [
