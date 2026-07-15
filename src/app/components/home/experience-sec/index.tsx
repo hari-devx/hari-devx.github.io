@@ -39,8 +39,8 @@ const ExperienceSec = () => {
 
   return (
     <section>
-      <div className="py-16 md:py-32">
-        <div className="container mx-auto px-4">
+      <div className="py-16 md:py-24 xl:py-32">
+        <div className="container">
           <Reveal>
             <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 md:mb-16">
               <h2>Experience</h2>
@@ -48,47 +48,27 @@ const ExperienceSec = () => {
             </div>
           </Reveal>
 
-          <div className="space-y-7 md:space-y-12">
+          <div className="space-y-5 md:space-y-7">
             {experiences.map((exp, index) => (
               <Reveal key={index} delay={index * 100}>
-                <div className="relative grid grid-cols-1 items-start gap-2.5 sm:grid-cols-3 md:gap-4 xl:gap-8">
-                <div className="">
-                  <h4 className="text-md mb-2 font-bold text-foreground">{exp.year}</h4>
-                  <h4 className="text-lg font-normal">{exp.title}</h4>
-                </div>
-
-                <div className=" relative">
-                  {index < experiences.length && (
-                    <div
-                      className={`absolute left-0 top-3 w-px ${index < experiences.length - 1 ? "h-40" : "h-30"} bg-muted`}
-                    ></div>
-                  )}
-
-                  <div className="no-print absolute left-0 top-0 transform -translate-x-1/2">
-                    {/* <div
-                      className={`no-print w-3.5 h-3.5 rounded-full border-1 bg-white flex items-center justify-center ${
-                        index === 1 ? "border-primary" : "border-black"
-                      }`}
-                    >
-                      {index === 1 && (
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      )}
-                    </div> */}
+                <div className="grid gap-5 rounded-2xl border border-border bg-card p-5 sm:p-7 lg:grid-cols-[minmax(150px,0.85fr)_minmax(180px,1fr)_minmax(0,1.6fr)] lg:gap-8">
+                  <div>
+                    <p className="mb-2 text-sm font-semibold text-primary">{exp.year}</p>
+                    <h4 className="text-xl font-semibold text-foreground">{exp.title}</h4>
                   </div>
 
-                  <div className="pl-4 lg:pl-7">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xl font-normal text-foreground">
+                  <div className="border-l border-border pl-5 lg:pl-7">
+                    <div className="mb-1 flex items-center gap-2">
+                      <span className="text-lg font-medium text-foreground">
                         {exp.company}
                       </span>
                     </div>
                     <p className="text-base font-normal">{exp.type}</p>
                   </div>
-                </div>
 
-                <div className="pl-8 sm:pl-0">
-                  <p className="leading-relaxed text-base">{exp.description}</p>
-                </div>
+                  <div>
+                    <p className="text-sm leading-relaxed md:text-base">{exp.description}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}

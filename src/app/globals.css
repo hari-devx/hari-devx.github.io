@@ -31,6 +31,45 @@ body {
   height: 100%;
 }
 
+.initial-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  transition: opacity 400ms ease, visibility 400ms ease;
+}
+
+.initial-loader--leave { opacity: 0; visibility: hidden; }
+
+.loader-scene {
+  position: relative;
+  width: 260px;
+  height: 205px;
+  margin-bottom: 1.5rem;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  animation: loader-float 3.8s ease-in-out infinite;
+}
+
+.loader-laptop { position: absolute; left: 42px; top: 36px; width: 176px; height: 132px; transform: rotateX(58deg) rotateZ(-20deg); transform-style: preserve-3d; }
+.loader-screen { position: absolute; left: 15px; bottom: 36px; width: 148px; height: 93px; padding: 13px 11px; overflow: hidden; border: 2px solid color-mix(in oklab, var(--primary) 70%, white); border-radius: 7px; background: color-mix(in oklab, var(--card) 86%, black); box-shadow: 0 0 28px color-mix(in oklab, var(--primary) 30%, transparent); color: var(--primary); font: 600 7px/1.75 ui-monospace, SFMono-Regular, Menlo, monospace; transform: rotateX(-58deg); transform-origin: bottom; }
+.loader-screen-glow { position: absolute; inset: 0; background: linear-gradient(110deg, transparent 15%, color-mix(in oklab, var(--primary) 12%, transparent) 48%, transparent 75%); transform: translateX(-110%); animation: code-scan 2.8s ease-in-out infinite; }
+.loader-screen span { display: block; position: relative; white-space: nowrap; }.loader-code-indent { padding-left: 9px; color: var(--muted-foreground); }
+.loader-keyboard { position: absolute; bottom: 0; left: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; width: 176px; height: 43px; padding: 8px; border-radius: 4px 4px 12px 12px; background: color-mix(in oklab, var(--card) 84%, black); box-shadow: 0 17px 16px color-mix(in oklab, black 30%, transparent); transform: translateZ(4px); }.loader-keyboard i { border-radius: 2px; background: color-mix(in oklab, var(--foreground) 22%, transparent); }.loader-keyboard i:nth-child(3n) { background: color-mix(in oklab, var(--primary) 55%, transparent); }
+.loader-code-card { position: absolute; right: 8px; top: 5px; z-index: 3; width: 72px; padding: 11px; border: 1px solid color-mix(in oklab, var(--primary) 50%, var(--border)); border-radius: 10px; background: color-mix(in oklab, var(--card) 86%, transparent); box-shadow: 0 14px 30px color-mix(in oklab, black 20%, transparent); backdrop-filter: blur(8px); transform: translateZ(60px) rotateY(-13deg); animation: code-card-float 3.8s ease-in-out infinite; }.loader-code-card span { display: block; margin-bottom: 7px; color: var(--primary); font: 700 12px ui-monospace, monospace; }.loader-code-card i { display: block; height: 3px; margin-top: 5px; border-radius: 99px; background: var(--muted-foreground); opacity: .65; }.loader-code-card i:nth-child(3) { width: 70%; background: var(--primary); }.loader-code-card i:nth-child(4) { width: 85%; }.loader-code-card i:nth-child(5) { width: 45%; }
+.loader-orbit { position: absolute; border: 1px solid color-mix(in oklab, var(--primary) 45%, transparent); border-radius: 50%; }.loader-orbit-one { inset: 19px -7px; transform: rotateX(66deg) rotateZ(14deg); animation: loader-spin 5s linear infinite; }.loader-orbit-two { inset: 46px 16px; border-color: color-mix(in oklab, var(--chart-2) 60%, transparent); transform: rotateX(66deg) rotateZ(-38deg); animation: loader-spin 4s linear infinite reverse; }
+.loader-copy { position: absolute; top: calc(50% + 123px); width: min(260px, calc(100% - 3rem)); text-align: center; }.loader-copy h1 { margin: 3px 0 14px; font-size: 1.25rem; line-height: 1.2; }.loader-eyebrow { font-size: 0.67rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--primary); }.loader-progress { height: 3px; overflow: hidden; border-radius: 999px; background: var(--border); }.loader-progress span { display: block; width: 42%; height: 100%; border-radius: inherit; background: var(--primary); animation: loader-progress 1.15s ease-in-out infinite; }
+
+@keyframes loader-float { 50% { transform: translateY(-9px); } }
+@keyframes loader-spin { to { transform: rotateX(66deg) rotateZ(374deg); } }
+@keyframes code-card-float { 50% { transform: translate3d(-6px, -8px, 52px) rotateY(-8deg); } }
+@keyframes code-scan { 55%, 100% { transform: translateX(110%); } }
+@keyframes loader-progress { 50% { transform: translateX(140%); } 51% { transform: translateX(-140%); } }
+
 .wave {
   animation-name: wave-animation;
   animation-duration: 2.5s;

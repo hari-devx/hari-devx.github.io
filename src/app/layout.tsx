@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import { ThemeProvider } from "./components/theme-provider";
+import InitialLoader from "./components/initial-loader";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={bricolageGrotesque.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <InitialLoader />
           <Header />
           {children}
           <Footer />

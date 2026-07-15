@@ -68,17 +68,17 @@ const Contact = () => {
   return (
     <section className="no-print">
       <div className="container">
-        <div className="pb-20 pt-16 md:pt-32">
+        <div className="pb-20 pt-16 md:pt-24 xl:pt-32">
           <Reveal>
             <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 md:mb-16">
               <h2>Contact Me</h2>
-              <p className="text-xl text-primary">( 04 )</p>
+              <p className="text-xl text-primary">( 05 )</p>
             </div>
           </Reveal>
 
           <Reveal>
             <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              <div className="grid lg:grid-cols-[1.45fr_0.9fr]">
+              <div className="grid lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.9fr)]">
                 <form onSubmit={handleSubmit} className="p-6 sm:p-9 lg:p-12">
                   <div className="mb-9">
                     <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary">Start a conversation</p>
@@ -108,7 +108,7 @@ const Contact = () => {
                   </div>
 
                   <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <Button type="submit" disabled={status === "submitting"} className="h-12 rounded-full bg-primary px-6 text-base text-primary-foreground hover:bg-primary/90">
+                    <Button type="submit" disabled={status === "submitting"} className="h-12 w-full rounded-full bg-primary px-6 text-base text-primary-foreground hover:bg-primary/90 sm:w-auto">
                       {status === "submitting" ? "Sending message..." : "Send message"}
                       <Send className="size-4" />
                     </Button>
