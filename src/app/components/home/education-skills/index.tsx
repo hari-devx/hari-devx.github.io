@@ -49,17 +49,31 @@ const EducationSkills = () => {
       </section>
 
       <section className="bg-muted/40">
-        <div className="container py-16 md:py-24 xl:py-32">
+        <div className="container py-20 md:py-28 xl:py-36">
           <Reveal>
-            <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 xl:mb-16">
+            <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pt-16 pb-7 xl:mb-16">
               <h2>Skills</h2>
               <p className="text-xl text-primary">( 04 )</p>
             </div>
           </Reveal>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:gap-4">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5  pb-20 ">
             {educationData?.skills?.map((skill: any, idx: number) => (
               <Reveal key={idx} delay={idx * 75}>
-                <div className="skill-card rounded-xl border border-border bg-card p-5 font-bold text-foreground shadow-sm">{skill}</div>
+                <article className="skill-card h-full rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-7">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold tracking-[0.16em] text-primary">CAPABILITY 0{idx + 1}</p>
+                      <h3 className="mt-2 text-2xl font-semibold">{skill.title}</h3>
+                    </div>
+                    <span className="text-2xl font-semibold text-primary/40">0{idx + 1}</span>
+                  </div>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed md:text-base">{skill.description}</p>
+                  <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-5">
+                    {(Array.isArray(skill.technologies) ? skill.technologies : []).map((technology: string) => (
+                      <span key={technology} className="rounded-full bg-muted px-3 py-1.5 text-sm font-medium text-foreground">{technology}</span>
+                    ))}
+                  </div>
+                </article>
               </Reveal>
             ))}
           </div>

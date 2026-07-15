@@ -9,7 +9,7 @@ const ExperienceSec = () => {
       company: "Closerlook Digital",
       type: "Fulltime",
       description:
-        "Built a Spring Boot infrastructure monitoring system tracking server health, DNS resolution, and SSL expiry to enable proactive outage detection. Designed and implemented RESTful microservices and real-time pipelines (WebSocket, MQTT) consumed by a Flutter application, processing thousands of daily transactions across 500+ active assets. Conducted code reviews and mentored junior engineers while collaborating with DevOps and QA teams in agile CI/CD-driven workflows.",
+        "Own backend delivery for infrastructure monitoring and real-time platform capabilities. Built Spring Boot services for server health, DNS resolution, and SSL-expiry visibility; designed REST and event-driven integrations used by a Flutter application serving 500+ active assets. Raise engineering quality through code reviews, mentoring, and close partnership with DevOps and QA.",
     },
     {
       year: "Mar 2023 - Mar 2025",
@@ -17,7 +17,7 @@ const ExperienceSec = () => {
       company: "Closerlook Digital",
       type: "Fulltime",
       description:
-        "Developed and maintained secure, production-grade applications across 500+ active assets. Integrated backend services using REST APIs and real-time streams. Worked extensively in Linux environments for debugging, logging, and root-cause analysis while improving operational stability by optimizing data flows.",
+        "Delivered and maintained secure backend capabilities across a 500+ asset environment. Integrated REST APIs and real-time streams, investigated production issues in Linux, and improved data flows through disciplined debugging, logging, and root-cause analysis.",
     },
     {
       year: "Nov 2022 - Mar 2023",
@@ -25,7 +25,7 @@ const ExperienceSec = () => {
       company: "Closerlook Digital",
       type: "Internship",
       description:
-        "Implemented backend-integrated features under senior mentorship. Debugged and resolved 20+ issues across application and API layers. Gained exposure to production release cycles, CI/CD pipelines, and quality practices.",
+        "Contributed production-facing features across application and API layers while building strong fundamentals in release engineering. Resolved 20+ issues through structured debugging and gained hands-on exposure to CI/CD, code quality, and production support practices.",
     },
     // {
     //   year: "2023+",

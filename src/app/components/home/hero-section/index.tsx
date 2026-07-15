@@ -25,9 +25,9 @@ const index = () => {
               <h1>Software Engineer II</h1>
             </div>
             <p className="max-w-md text-muted-foreground xl:max-w-xl">
-              Backend engineer with 3+ years building secure, scalable systems using Java,
-              Spring Boot, REST APIs, and real-time messaging. Skilled in CI/CD automation,
-              cloud-native practices, and clean architecture.
+              Backend-focused software engineer with 3+ years of experience designing reliable
+              services, real-time integrations, and cloud-ready platforms. I turn complex
+              operational requirements into maintainable Java and Spring Boot systems.
             </p>
           </Reveal>
           {/* <Image

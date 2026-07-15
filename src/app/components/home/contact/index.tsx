@@ -82,8 +82,8 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="p-6 sm:p-9 lg:p-12">
                   <div className="mb-9">
                     <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary">Start a conversation</p>
-                    <h3 className="text-3xl md:text-4xl">Let&apos;s build something reliable.</h3>
-                    <p className="mt-3 max-w-xl">Have a role, project, or technical problem in mind? Send a note and I&apos;ll get back to you soon.</p>
+                    <h3 className="text-3xl md:text-4xl">Let&apos;s solve the next hard problem.</h3>
+                    <p className="mt-3 max-w-xl">Whether you&apos;re scaling a backend platform, improving reliability, or looking for a thoughtful engineering partner, I&apos;d be glad to connect.</p>
                   </div>
 
                   <div className="grid gap-6 sm:grid-cols-2">

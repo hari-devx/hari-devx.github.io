@@ -40,17 +40,17 @@ const AboutMe = () => {
 
               <div className="w-full max-w-3xl">
                 <p className="max-w-2xl text-base leading-relaxed md:text-lg">
-                  I build production-grade backend systems using Java and Spring Boot,
-                  focusing on secure REST APIs, real-time pipelines, and resilient
-                  cloud-native architecture. I enjoy improving operational stability
-                  with automation, clean design, and scalable infrastructure.
+                  I design and evolve backend systems that are dependable under real-world
+                  conditions. My work spans secure APIs, event-driven integrations, and
+                  cloud-native services—always with an emphasis on clear ownership,
+                  operational visibility, and maintainable engineering practices.
                 </p>
 
                 <div className="grid grid-cols-1 gap-6 border-b border-border py-8 sm:grid-cols-3 sm:gap-5 xl:py-12">
                   {[
-                    { count: "3+", label: "Years of experience" },
-                    { count: "1", label: "Company" },
-                    { count: "2+", label: "Production systems" },
+                    { count: "3+", label: "Years building production software" },
+                    { count: "500+", label: "Active assets supported" },
+                    { count: "2+", label: "Real-time systems delivered" },
                   ].map((item, i) => (
                     <div key={i}>
                       <h3>{item.count}</h3>

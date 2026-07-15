@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { title } from "process";
 
 const contactBar = {
   contactItems: [
@@ -50,12 +49,26 @@ const educationData = {
     }
   ],
   skills: [
-    "Java",
-    "Spring Boot",
-    "AWS (EC2, S3, IAM, VPC)",
-    "REST APIs",
-    "WebSocket / MQTT",
-    "CI/CD & Git"
+    {
+      title: "Backend Architecture",
+      description: "Designing maintainable services with clear contracts, resilience, and operational ownership.",
+      technologies: ["Java", "Spring Boot", "Microservices", "REST APIs"]
+    },
+    {
+      title: "Event-Driven Systems",
+      description: "Building responsive integrations and real-time workflows for connected platforms.",
+      technologies: ["Apache Kafka", "RabbitMQ", "WebSocket", "MQTT"]
+    },
+    {
+      title: "Cloud & Delivery",
+      description: "Shipping reliable workloads through repeatable infrastructure and delivery practices.",
+      technologies: ["AWS EC2", "Docker", "Jenkins", "Git", "Bitbucket"]
+    },
+    {
+      title: "Engineering Foundations",
+      description: "Applying sound problem-solving, debugging, and system-level reasoning to production work.",
+      technologies: ["Data Structures & Algorithms"]
+    }
   ]
 }
 
