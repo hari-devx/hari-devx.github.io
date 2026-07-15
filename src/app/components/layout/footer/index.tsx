@@ -1,5 +1,4 @@
 import Logo from "../logo";
-import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -7,11 +6,11 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-col gap-1.5 items-center sm:items-start">
           <div className="relative flex items-center w-full">
-            <div className="grow h-px bg-black" />
+            <div className="h-px grow bg-border" />
             <div className="mx-4">
               <Logo />
             </div>
-            <div className="grow h-px bg-black" />
+            <div className="h-px grow bg-border" />
           </div>
           <p className="text-muted-foreground">
             2026 © Hariharan Ravichandran. All rights reserved.

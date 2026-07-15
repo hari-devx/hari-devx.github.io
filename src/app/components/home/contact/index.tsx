@@ -1,205 +1,169 @@
 "use client";
+
+import { ArrowUpRight, CheckCircle2, Mail, Phone, Send } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import Image from "next/image";
-import Link from "next/link";
 import Reveal from "@/components/ui/reveal";
-import { useEffect, useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
+
+type ContactLink = { title: string; href: string };
+type ContactInfo = { type: "email" | "phone"; label: string; link: string };
+
+const fieldClassName =
+  "h-12 rounded-xl border-border bg-background px-4 text-foreground shadow-none placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20";
 
 const Contact = () => {
-    const [contactData, setContactData] = useState<any>(null);
-    const [submitted, setSubmitted] = useState(false);
-    const [formData, setFormData] = useState({
-        name: "",
-        number: "",
-        email: "",
-        message: "",
-    });
+  const [socialLinks, setSocialLinks] = useState<ContactLink[]>([]);
+  const [contactInfo, setContactInfo] = useState<ContactInfo[]>([]);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({ name: "", number: "", email: "", message: "" });
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch("/api/page-data");
-                if (!res.ok) throw new Error("Failed to fetch");
-                const data = await res.json();
-                setContactData(data?.contactLinks);
-            } catch (error) {
-                console.error("Error fetching services:", error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    const reset = () => {
-        setFormData({ name: "", number: "", email: "", message: "" });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/page-data");
+        if (!res.ok) throw new Error("Failed to fetch contact details");
+        const data = await res.json();
+        setSocialLinks(data?.contactLinks?.socialLinks ?? []);
+        setContactInfo(data?.contactLinks?.contactInfo ?? []);
+      } catch (error) {
+        console.error("Error fetching contact details:", error);
+      }
     };
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    fetchData();
+  }, []);
 
-        fetch("https://formsubmit.co/ajax/hariharan.ravichandran1004@gmail.com", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify({
-                name: formData.name,
-                number: formData.number,
-                email: formData.email,
-                message: formData.message,
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setSubmitted(data.success);
-                reset();
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
-    };
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("submitting");
 
-    const handleChange = (e: any) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/hariharan.ravichandran1004@gmail.com", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
 
-    return (
-        <section className="no-print">
-            <div className="container">
-                <div className="pt-16 md:pt-32 pb-20">
-                    <Reveal>
-                        <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 md:mb-16">
-                            <h2>Contact Me</h2>
-                            <p className="text-xl text-primary">( 05 )</p>
-                        </div>
-                    </Reveal>
-                    <Reveal>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                            <form onSubmit={handleSubmit}>
-                                <div className="flex flex-col gap-7 sm:gap-12">
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                        <div>
-                                            <Label htmlFor="name" className="label">
-                                                Name *
-                                            </Label>
-                                            <Input
-                                                required
-                                                className="w-full border-0 border-b border-border rounded-none focus-visible:ring-0 focus-visible:border-primary focus-visible:outline-none py-2"
-                                                id="name"
-                                                name="name"
-                                                value={formData.name}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div>
-                                            <Label htmlFor="number" className="label">
-                                                Phone *
-                                            </Label>
-                                            <Input
-                                                required
-                                                className="w-full border-0 border-b border-border rounded-none focus-visible:ring-0 focus-visible:border-primary focus-visible:outline-none py-2"
-                                                id="number"
-                                                type="number"
-                                                name="number"
-                                                value={formData.number}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <Label htmlFor="email" className="label">
-                                            Email *
-                                        </Label>
-                                        <Input
-                                            required
-                                            className="w-full border-0 border-b border-border rounded-none focus-visible:ring-0 focus-visible:border-primary focus-visible:outline-none py-2"
-                                            id="email"
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                        />
-                                    </div>
-                                    <div>
-                                        <Label htmlFor="message" className="label">
-                                            Message *
-                                        </Label>
-                                        <Textarea
-                                            required
-                                            className="w-full border-0 border-b border-border rounded-none focus-visible:ring-0 focus-visible:border-primary focus-visible:outline-none py-2"
-                                            name="message"
-                                            id="message"
-                                            value={formData.message}
-                                            onChange={handleChange}
-                                            rows={2}
-                                        />
-                                    </div>
-                                    {submitted && (
-                                        <div className="flex items-center gap-2">
-                                            <Image
-                                                src={"/images/icon/success-icon.svg"}
-                                                alt="success-icon"
-                                                width={30}
-                                                height={30}
-                                            />
-                                            <p className="text-muted-foreground">
-                                                Great!!! Email has been Successfully Sent. We will get in
-                                                touch asap.
-                                            </p>
-                                        </div>
-                                    )}
-                                    <Button
-                                        variant="outline"
-                                        type="submit"
-                                        className="relative overflow-hidden cursor-pointer w-fit h-full py-2 sm:py-3 md:py-5 px-4 sm:px-5 md:px-7 border border-primary rounded-full group"
-                                    >
-                                        <span className="relative z-10 text-xl font-medium text-primary group-hover:text-white transition-colors duration-300">
-                                            Send Now
-                                        </span>
-                                    </Button>
-                                </div>
-                            </form>
-                            <div className="flex flex-col sm:flex-row md:flex-col justify-between gap-5 md:gap-20 items-center md:items-end">
-                                <div className="flex flex-wrap flex-row md:flex-col items-start md:items-end gap-4 md:gap-6">
-                                    {contactData?.socialLinks?.map((value: any, index: any) => {
-                                        return (
-                                            <div key={index}>
-                                                <Link
-                                                    href={value?.href}
-                                                    className="text-base sm:text-lg font-normal text-muted-foreground hover:text-primary"
-                                                >
-                                                    {value?.title}
-                                                </Link>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                                <div className="flex flex-wrap justify-center gap-5 lg:gap-11 items-end">
-                                    {contactData?.contactInfo?.map((value: any, index: any) => {
-                                        return (
-                                            <div key={index}>
-                                                <Link
-                                                    href={value?.link}
-                                                    className="text-base lg:text-lg text-black font-normal border-b border-black pb-3 hover:text-primary hover:border-primary"
-                                                >
-                                                    {value?.label}
-                                                </Link>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    </Reveal>
-                </div>
+      if (!response.ok || !data.success) throw new Error("Unable to send message");
+
+      setFormData({ name: "", number: "", email: "", message: "" });
+      setStatus("success");
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setStatus("error");
+    }
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+    if (status !== "idle") setStatus("idle");
+  };
+
+  return (
+    <section className="no-print">
+      <div className="container">
+        <div className="pb-20 pt-16 md:pt-32">
+          <Reveal>
+            <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 md:mb-16">
+              <h2>Contact Me</h2>
+              <p className="text-xl text-primary">( 04 )</p>
             </div>
-        </section>
-    );
+          </Reveal>
+
+          <Reveal>
+            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+              <div className="grid lg:grid-cols-[1.45fr_0.9fr]">
+                <form onSubmit={handleSubmit} className="p-6 sm:p-9 lg:p-12">
+                  <div className="mb-9">
+                    <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary">Start a conversation</p>
+                    <h3 className="text-3xl md:text-4xl">Let&apos;s build something reliable.</h3>
+                    <p className="mt-3 max-w-xl">Have a role, project, or technical problem in mind? Send a note and I&apos;ll get back to you soon.</p>
+                  </div>
+
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-sm font-medium text-foreground">Name <span className="text-primary">*</span></Label>
+                      <Input required id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" className={fieldClassName} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="number" className="text-sm font-medium text-foreground">Phone <span className="text-primary">*</span></Label>
+                      <Input required id="number" type="tel" name="number" value={formData.number} onChange={handleChange} placeholder="Your phone number" className={fieldClassName} />
+                    </div>
+                  </div>
+
+                  <div className="mt-6 space-y-2">
+                    <Label htmlFor="email" className="text-sm font-medium text-foreground">Email <span className="text-primary">*</span></Label>
+                    <Input required id="email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@company.com" className={fieldClassName} />
+                  </div>
+
+                  <div className="mt-6 space-y-2">
+                    <Label htmlFor="message" className="text-sm font-medium text-foreground">How can I help? <span className="text-primary">*</span></Label>
+                    <Textarea required id="message" name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Tell me a little about the opportunity or project..." className="min-h-32 resize-y rounded-xl border-border bg-background px-4 py-3 text-foreground shadow-none placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20" />
+                  </div>
+
+                  <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <Button type="submit" disabled={status === "submitting"} className="h-12 rounded-full bg-primary px-6 text-base text-primary-foreground hover:bg-primary/90">
+                      {status === "submitting" ? "Sending message..." : "Send message"}
+                      <Send className="size-4" />
+                    </Button>
+                    <p className="text-sm text-muted-foreground">Fields marked <span className="text-primary">*</span> are required.</p>
+                  </div>
+
+                  {status === "success" && (
+                    <p role="status" className="mt-6 flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-foreground">
+                      <CheckCircle2 className="size-5 shrink-0 text-primary" /> Thanks — your message has been sent.
+                    </p>
+                  )}
+                  {status === "error" && <p role="alert" className="mt-6 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">Something went wrong. Please email me directly instead.</p>}
+                </form>
+
+                <aside className="flex flex-col justify-between border-t border-border bg-muted/50 p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Contact details</p>
+                    <h4 className="mt-3 text-2xl font-semibold">Prefer a direct route?</h4>
+                    <p className="mt-3">Reach out by email or phone, or find me on LinkedIn.</p>
+                  </div>
+
+                  <div className="my-10 space-y-3">
+                    {contactInfo.map((item) => {
+                      const Icon = item.type === "email" ? Mail : Phone;
+                      return (
+                        <Link key={item.type} href={item.link} className="group flex items-center gap-4 rounded-2xl border border-border bg-background p-4 transition hover:border-primary hover:shadow-sm">
+                          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><Icon className="size-5" /></span>
+                          <span className="min-w-0">
+                            <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">{item.type}</span>
+                            <span className="block truncate text-sm font-medium text-foreground sm:text-base">{item.label}</span>
+                          </span>
+                          <ArrowUpRight className="ml-auto size-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
+                        </Link>
+                      );
+                    })}
+                  </div>
+
+                  <div className="border-t border-border pt-6">
+                    <p className="mb-3 text-sm text-muted-foreground">Elsewhere</p>
+                    <div className="flex flex-wrap gap-2">
+                      {socialLinks.map((link) => (
+                        <Link key={link.title} href={link.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition hover:border-primary hover:text-primary">
+                          {link.title} <ArrowUpRight className="size-3.5" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Contact;

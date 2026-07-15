@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Reveal from "@/components/ui/reveal";
 
 const EducationSkills = () => {
   const [educationData, setEductionData] = useState<any>(null);
@@ -32,35 +33,34 @@ const EducationSkills = () => {
             className="no-print absolute top-0 left-0 transform -translate-y-1/2"
           />
           <div className="relative z-10 py-16 md:py-32">
-            <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 xl:mb-16">
-              <h2>Education & Skills</h2>
-              <p className="text-xl text-primary">( 03 )</p>
-            </div>
+            <Reveal>
+              <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 xl:mb-16">
+                <h2>Education & Skills</h2>
+                <p className="text-xl text-primary">( 03 )</p>
+              </div>
+            </Reveal>
             <div className="flex flex-col lg:flex-row items-start gap-10 xl:gap-20">
               <div className="w-full lg:max-w-md flex flex-col gap-0 xl:gap-8">
                 {educationData?.education?.map((value: any, index: any) => {
                   return (
-                    <div key={index} className="flex items-start gap-6">
-                      <div className="no-print mt-2.5 w-3.5 h-3.5 rounded-full border-1 bg-white flex items-center justify-center border-black">
-                        <div className="w-1.5 h-1.5 rounded-full bg-black"></div>
+                    <Reveal key={index} delay={index * 100} className="flex items-start gap-6">
+                      <div className="no-print mt-2.5 flex size-3.5 items-center justify-center rounded-full border border-foreground bg-background">
+                        <div className="size-1.5 rounded-full bg-foreground"></div>
                       </div>
                       <div className="flex-1 flex flex-col gap-2">
                         <h5>{value?.title}</h5>
                         <p className="font-normal">{value?.description}</p>
                       </div>
-                    </div>
+                    </Reveal>
                   );
                 })}
               </div>
               <div className="w-full">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                   {educationData?.skills?.map((skill: any, idx: number) => (
-                    <div
-                      key={idx}
-                      className="border border-muted rounded-md text-black font-bold"
-                    >
-                      {skill}
-                    </div>
+                    <Reveal key={idx} delay={idx * 75}>
+                      <div className="skill-card rounded-xl border border-border bg-card p-5 font-bold text-foreground shadow-sm">{skill}</div>
+                    </Reveal>
                   ))}
                 </div>
               </div>

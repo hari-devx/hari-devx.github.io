@@ -1,4 +1,5 @@
 import React from "react";
+import Reveal from "@/components/ui/reveal";
 
 const ExperienceSec = () => {
   const experiences = [
@@ -40,19 +41,19 @@ const ExperienceSec = () => {
     <section>
       <div className="py-16 md:py-32">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 md:mb-16">
-            <h2>Experience</h2>
-            <p className="text-xl text-primary">( 02 )</p>
-          </div>
+          <Reveal>
+            <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 md:mb-16">
+              <h2>Experience</h2>
+              <p className="text-xl text-primary">( 02 )</p>
+            </div>
+          </Reveal>
 
           <div className="space-y-7 md:space-y-12">
             {experiences.map((exp, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 md:gap-4 xl:gap-8 items-start relative"
-              >
+              <Reveal key={index} delay={index * 100}>
+                <div className="relative grid grid-cols-1 items-start gap-2.5 sm:grid-cols-3 md:gap-4 xl:gap-8">
                 <div className="">
-                  <h4 className="text-md font-bold mb-2 text-black">{exp.year}</h4>
+                  <h4 className="text-md mb-2 font-bold text-foreground">{exp.year}</h4>
                   <h4 className="text-lg font-normal">{exp.title}</h4>
                 </div>
 
@@ -77,7 +78,7 @@ const ExperienceSec = () => {
 
                   <div className="pl-4 lg:pl-7">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xl text-black font-normal">
+                      <span className="text-xl font-normal text-foreground">
                         {exp.company}
                       </span>
                     </div>
@@ -88,7 +89,8 @@ const ExperienceSec = () => {
                 <div className="pl-8 sm:pl-0">
                   <p className="leading-relaxed text-base">{exp.description}</p>
                 </div>
-              </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
