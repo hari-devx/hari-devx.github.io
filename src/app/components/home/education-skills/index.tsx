@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Reveal from "@/components/ui/reveal";
 import SectionHeading from "../section-heading";
 import { education, skills } from "@/data/portfolio";
@@ -6,9 +5,8 @@ import { education, skills } from "@/data/portfolio";
 const EducationSkills = () => {
   return (
     <>
-      <section className="overflow-hidden border-t border-muted">
+      <section id="education" className="overflow-hidden border-t border-muted">
         <div className="container relative z-10">
-          <Image src="/images/home/education-skill/edu-skill-vector.svg" alt="" width={260} height={170} className="no-print absolute left-0 top-0 -translate-y-1/2" />
           <div className="relative z-10 py-16 md:py-24 xl:py-32">
             <SectionHeading title="Education" index={3} className="xl:mb-16" />
             <div className="w-full space-y-5 sm:space-y-6">
@@ -26,7 +24,7 @@ const EducationSkills = () => {
         </div>
       </section>
 
-      <section className="bg-muted/40">
+      <section id="skills" className="bg-muted/40">
         <div className="container py-16 sm:py-20 md:py-28 xl:py-36">
           <SectionHeading title="Skills" index={4} className="xl:mb-16" />
           <div className="grid grid-cols-1 gap-4 pb-4 sm:gap-5 lg:grid-cols-2">

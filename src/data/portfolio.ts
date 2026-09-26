@@ -10,6 +10,13 @@ export const PHONE = "+91 9384418654";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/haridev1004/";
 export const GITHUB_URL = "https://github.com/hari-devx";
 
+export const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+
 export const contactBar: { contactItems: ContactItem[]; socialItems: SocialItem[] } = {
   contactItems: [
     {

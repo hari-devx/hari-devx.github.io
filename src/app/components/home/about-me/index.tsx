@@ -1,89 +1,57 @@
-"use client";
-
-import Image from "next/image";
-import ThemeImage from "@/components/ui/theme-image";
-import { Badge } from "@/components/ui/badge";
+import { Languages } from "lucide-react";
+import Reveal from "@/components/ui/reveal";
 import SectionHeading from "../section-heading";
+
+const STATS = [
+  { count: "3+", label: "Years building production software" },
+  { count: "500+", label: "Active assets supported" },
+  { count: "2+", label: "Real-time systems delivered" },
+];
+
+const LANGUAGES = ["English", "Tamil"];
 
 const AboutMe = () => {
   return (
-    <section>
-      <div className="relative overflow-hidden bg-muted py-16 md:py-24 xl:py-32">
-        {/* <div className="absolute top-0 w-full px-9">
-          <Image
-            src="/images/home/about-me/resume-bg-img.svg"
-            alt="resume-bg-img"
-            width={1200}
-            height={348}
-            className="w-full opacity-5"
-          />
-        </div> */}
+    <section id="about">
+      <div className="bg-muted py-16 md:py-24 xl:py-32">
+        <div className="container">
+          <SectionHeading title="About Me" index={1} />
 
-        <div className="relative z-10">
-          <div className="container">
-            <SectionHeading title="About Me" index={1} className="mb-0 md:mb-0" />
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
+            <Reveal className="flex flex-col gap-8">
+              <p className="text-base leading-relaxed text-foreground/85 md:text-lg">
+                I design and evolve backend systems that are dependable under real-world
+                conditions. My work spans secure APIs, event-driven integrations, and
+                cloud-native services—always with an emphasis on clear ownership,
+                operational visibility, and maintainable engineering practices.
+              </p>
 
-            <div className="grid items-center gap-10 pt-10 lg:grid-cols-[minmax(220px,0.42fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20 xl:pt-16">
-              <div className="mx-auto hidden w-full max-w-[303px] lg:flex">
-                <Image
-                  src="/images/home/about-me/about-banner-img.svg"
-                  alt="about-banner"
-                  width={303}
-                  height={440}
-                  className="h-auto w-full"
-                />
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                  <Languages className="size-4 text-primary" /> Languages
+                </span>
+                {LANGUAGES.map((lang) => (
+                  <span key={lang} className="rounded-full border border-border bg-background px-4 py-1.5 text-sm text-muted-foreground">
+                    {lang}
+                  </span>
+                ))}
               </div>
+            </Reveal>
 
-              <div className="w-full max-w-3xl">
-                <p className="max-w-2xl text-base leading-relaxed md:text-lg">
-                  I design and evolve backend systems that are dependable under real-world
-                  conditions. My work spans secure APIs, event-driven integrations, and
-                  cloud-native services—always with an emphasis on clear ownership,
-                  operational visibility, and maintainable engineering practices.
-                </p>
-
-                <div className="grid grid-cols-1 gap-6 border-b border-border py-8 sm:grid-cols-3 sm:gap-5 xl:py-12">
-                  {[
-                    { count: "3+", label: "Years building production software" },
-                    { count: "500+", label: "Active assets supported" },
-                    { count: "2+", label: "Real-time systems delivered" },
-                  ].map((item, i) => (
-                    <div key={i}>
-                      <h3>{item.count}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground md:text-base">
-                        {item.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col items-start gap-4 pt-8 sm:flex-row sm:items-center xl:pt-12">
-                  <div className="flex items-center gap-3.5">
-                    <ThemeImage
-                      src="/images/icon/lang-icon.svg"
-                      darkSrc="/images/icon/lang-icon-dark.svg"
-                      alt="lang-icon"
-                      width={30}
-                      height={30}
-                    />
-                    <p className="text-base text-foreground xl:text-xl">Language</p>
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              {STATS.map((item, i) => (
+                <Reveal key={item.label} delay={i * 90}>
+                  <div className="h-full rounded-2xl border border-border bg-background p-4 sm:p-6">
+                    <p className="font-mono text-2xl font-semibold text-foreground sm:text-4xl">{item.count}</p>
+                    <p className="mt-2 text-xs leading-snug text-muted-foreground sm:text-sm">{item.label}</p>
                   </div>
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    {["English", "Tamil"].map((lang, index) => (
-                      <Badge key={index} variant="outline" className="h-full rounded-full bg-background">
-                        <p className="bg-background px-4 py-2 text-sm text-muted-foreground md:px-5 md:text-base">
-                          {lang}
-                        </p>
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

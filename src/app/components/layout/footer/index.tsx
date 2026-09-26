@@ -1,21 +1,36 @@
+import { ArrowUp } from "lucide-react";
+import { EMAIL, contactBar } from "@/data/portfolio";
 import Logo from "../logo";
+
+const links = [
+  ...contactBar.socialItems.map(({ name, link }) => ({ label: name, href: link, external: true })),
+  { label: "Email", href: `mailto:${EMAIL}`, external: false },
+];
 
 const Footer = () => {
   return (
-    <footer className="py-6 sm:py-14 flex items-center justify-center">
-      <div className="container">
-        <div className="flex flex-col gap-1.5 items-center sm:items-start">
-          <div className="relative flex items-center w-full">
-            <div className="h-px grow bg-border" />
-            <div className="mx-4">
-              <Logo />
-            </div>
-            <div className="h-px grow bg-border" />
-          </div>
-          <p className="text-muted-foreground">
-            2026 © Hariharan Ravichandran. All rights reserved.
-          </p>
+    <footer className="border-t border-border">
+      <div className="container flex flex-col items-center gap-6 py-10 sm:py-12 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center gap-3 md:items-start">
+          <Logo />
+          <p className="text-sm text-muted-foreground">© 2026 Hariharan Ravichandran. All rights reserved.</p>
         </div>
+
+        <nav aria-label="Footer" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
+          {links.map(({ label, href, external }) => (
+            <a
+              key={label}
+              href={href}
+              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {label}
+            </a>
+          ))}
+          <a href="#top" className="inline-flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-primary">
+            Back to top <ArrowUp className="size-4" />
+          </a>
+        </nav>
       </div>
     </footer>
   );

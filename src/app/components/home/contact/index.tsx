@@ -47,7 +47,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="no-print">
+    <section id="contact" className="no-print">
       <div className="container">
         <div className="pb-16 pt-16 sm:pb-20 md:pt-24 xl:pt-32">
           <SectionHeading title="Contact Me" index={5} />
@@ -68,8 +68,8 @@ const Contact = () => {
                       <Input required id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" className={fieldClassName} />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="number" className="text-sm font-medium text-foreground">Phone <span className="text-primary">*</span></Label>
-                      <Input required id="number" type="tel" name="number" value={formData.number} onChange={handleChange} placeholder="Your phone number" className={fieldClassName} />
+                      <Label htmlFor="number" className="text-sm font-medium text-foreground">Phone <span className="font-normal text-muted-foreground">(optional)</span></Label>
+                      <Input id="number" type="tel" name="number" value={formData.number} onChange={handleChange} placeholder="Your phone number" className={fieldClassName} />
                     </div>
                   </div>
 

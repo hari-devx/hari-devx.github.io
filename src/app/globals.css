@@ -8,6 +8,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -322,8 +326,8 @@ body {
   position: absolute;
   z-index: -1;
   border-radius: 9999px;
-  filter: blur(12px);
-  opacity: 0.18;
+  filter: blur(90px);
+  opacity: 0.22;
   pointer-events: none;
 }
 

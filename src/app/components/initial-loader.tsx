@@ -11,12 +11,12 @@ const STEPS = [
 ];
 
 const SPINNER = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏";
-// In `next dev` the run is stretched to ~10s so the animation can be inspected;
-// production builds keep the ~2s run.
+// Production shows the run for at least 5s; `next dev` stretches it to ~10s
+// so the animation can be inspected.
 const IS_DEV = process.env.NODE_ENV === "development";
-const START_DELAY_MS = IS_DEV ? 400 : 250;
-const STEP_MS = IS_DEV ? 2000 : 360;
-const HOLD_MS = IS_DEV ? 1150 : 650;
+const START_DELAY_MS = IS_DEV ? 400 : 300;
+const STEP_MS = IS_DEV ? 2000 : 1050;
+const HOLD_MS = IS_DEV ? 1150 : 600;
 const FADE_MS = 450;
 const SEEN_KEY = "hr-boot-seen";
 

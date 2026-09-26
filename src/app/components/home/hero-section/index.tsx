@@ -1,3 +1,4 @@
+import { ArrowRight, Download } from "lucide-react";
 import Reveal from "@/components/ui/reveal";
 import { Cursor, TerminalWindow } from "@/components/ui/terminal";
 
@@ -24,6 +25,14 @@ const HeroSection = () => {
               services, real-time integrations, and cloud-ready platforms. I turn complex
               operational requirements into maintainable Java and Spring Boot systems.
             </p>
+            <div className="no-print flex flex-col gap-3 xs:flex-row">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 sm:text-base">
+                Get in touch <ArrowRight className="size-4" />
+              </a>
+              <a href="/resume.pdf" download className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary hover:text-primary sm:text-base">
+                <Download className="size-4" /> Download resume
+              </a>
+            </div>
           </Reveal>
 
           <Reveal delay={150} className="no-print">
