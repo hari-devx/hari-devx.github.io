@@ -2,47 +2,27 @@
 
 import { ArrowUpRight, CheckCircle2, Mail, Phone, Send } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Reveal from "@/components/ui/reveal";
 import { Textarea } from "@/components/ui/textarea";
-
-type ContactLink = { title: string; href: string };
-type ContactInfo = { type: "email" | "phone"; label: string; link: string };
+import { EMAIL, contactLinks } from "@/data/portfolio";
 
 const fieldClassName =
   "h-12 rounded-xl border-border bg-background px-4 text-foreground shadow-none placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20";
 
 const Contact = () => {
-  const [socialLinks, setSocialLinks] = useState<ContactLink[]>([]);
-  const [contactInfo, setContactInfo] = useState<ContactInfo[]>([]);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [formData, setFormData] = useState({ name: "", number: "", email: "", message: "" });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/page-data");
-        if (!res.ok) throw new Error("Failed to fetch contact details");
-        const data = await res.json();
-        setSocialLinks(data?.contactLinks?.socialLinks ?? []);
-        setContactInfo(data?.contactLinks?.contactInfo ?? []);
-      } catch (error) {
-        console.error("Error fetching contact details:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("submitting");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/hariharan.ravichandran1004@gmail.com", {
+      const response = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(formData),
@@ -131,7 +111,7 @@ const Contact = () => {
                   </div>
 
                   <div className="my-7 space-y-3 sm:my-10">
-                    {contactInfo.map((item) => {
+                    {contactLinks.contactInfo.map((item) => {
                       const Icon = item.type === "email" ? Mail : Phone;
                       return (
                         <Link key={item.type} href={item.link} className="group flex min-w-0 items-center gap-3 rounded-2xl border border-border bg-background p-3 transition hover:border-primary hover:shadow-sm sm:gap-4 sm:p-4">
@@ -149,7 +129,7 @@ const Contact = () => {
                   <div className="border-t border-border pt-6">
                     <p className="mb-3 text-sm text-muted-foreground">Elsewhere</p>
                     <div className="flex flex-wrap gap-2">
-                      {socialLinks.map((link) => (
+                      {contactLinks.socialLinks.map((link) => (
                         <Link key={link.title} href={link.href} target="_blank" rel="noreferrer" className="inline-flex max-w-full items-center gap-1 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition hover:border-primary hover:text-primary">
                           {link.title} <ArrowUpRight className="size-3.5" />
                         </Link>

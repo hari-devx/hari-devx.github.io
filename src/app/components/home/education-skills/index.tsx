@@ -1,26 +1,8 @@
-"use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Reveal from "@/components/ui/reveal";
+import { education, skills } from "@/data/portfolio";
 
 const EducationSkills = () => {
-  const [educationData, setEductionData] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/page-data");
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setEductionData(data?.educationData);
-      } catch (error) {
-        console.error("Error fetching services:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <>
       <section className="overflow-hidden border-t border-muted">
@@ -34,12 +16,12 @@ const EducationSkills = () => {
               </div>
             </Reveal>
             <div className="w-full space-y-5 sm:space-y-6">
-              {educationData?.education?.map((value: any, index: number) => (
+              {education.map((value, index) => (
                 <Reveal key={index} delay={index * 100} className="education-item flex items-start gap-5 rounded-2xl border border-border bg-card p-6 sm:gap-7 sm:p-8">
                   <div className="no-print mt-2 flex size-4 shrink-0 items-center justify-center rounded-full border border-primary bg-background"><div className="size-1.5 rounded-full bg-primary" /></div>
                   <div className="flex-1">
-                    <h5>{value?.title}</h5>
-                    <p className="mt-2 font-normal">{value?.description}</p>
+                    <h5>{value.title}</h5>
+                    <p className="mt-2 font-normal">{value.description}</p>
                   </div>
                 </Reveal>
               ))}
@@ -57,7 +39,7 @@ const EducationSkills = () => {
             </div>
           </Reveal>
           <div className="grid grid-cols-1 gap-4 pb-4 sm:gap-5 lg:grid-cols-2">
-            {educationData?.skills?.map((skill: any, idx: number) => (
+            {skills.map((skill, idx) => (
               <Reveal key={idx} delay={idx * 75}>
                 <article className="skill-card h-full rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-7">
                   <div className="flex items-start justify-between gap-4">
@@ -69,7 +51,7 @@ const EducationSkills = () => {
                   </div>
                   <p className="mt-3 max-w-md text-sm leading-relaxed md:text-base">{skill.description}</p>
                   <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-5">
-                    {(Array.isArray(skill.technologies) ? skill.technologies : []).map((technology: string) => (
+                    {skill.technologies.map((technology) => (
                       <span key={technology} className="rounded-full bg-muted px-3 py-1.5 text-sm font-medium text-foreground">{technology}</span>
                     ))}
                   </div>

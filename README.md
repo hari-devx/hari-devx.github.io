@@ -86,13 +86,13 @@ styles/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/hariharan-ravichandran-1004/hari-s-portfolio.git
+git clone https://github.com/hari-devx/hari-devx.github.io.git
 ```
 
 ### 2. Navigate to the Project
 
 ```bash
-cd hari-s-portfolio
+cd hari-devx.github.io
 ```
 
 ### 3. Install Dependencies
@@ -145,7 +145,11 @@ http://localhost:3000
 
 ## 🌐 Deployment
 
-Deploy your portfolio easily using Vercel.
+The site is statically exported (`output: "export"`) and published to **https://hari-devx.github.io** by the GitHub Actions workflow in `.github/workflows/deploy.yml` on every push to `master`.
+
+In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.
+
+To build the static site locally (output goes to `out/`):
 
 ```bash
 npm run build
@@ -156,8 +160,8 @@ npm run build
 ## 📫 Connect With Me
 
 * LinkedIn: https://www.linkedin.com/in/haridev1004/
-* GitHub: https://github.com/hariharan-ravichandran-1004/
-* Email: [your-email@example.com](mailto:your-email@example.com)
+* GitHub: https://github.com/hari-devx/
+* Email: [hariharan.ravichandran1004@gmail.com](mailto:hariharan.ravichandran1004@gmail.com)
 
 ---
 

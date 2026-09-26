@@ -12,12 +12,12 @@ const bricolageGrotesque = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hari-devx.github.io"),
   title: "Portfolio",
   description: "By Hari.Dev",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
       { url: "/favicon.png", type: "image/png", sizes: "192x192" },
     ],
     apple: "/favicon.png",
