@@ -3,7 +3,7 @@
 import Image from "next/image";
 import ThemeImage from "@/components/ui/theme-image";
 import { Badge } from "@/components/ui/badge";
-import Reveal from "@/components/ui/reveal";
+import SectionHeading from "../section-heading";
 
 const AboutMe = () => {
   return (
@@ -21,12 +21,7 @@ const AboutMe = () => {
 
         <div className="relative z-10">
           <div className="container">
-            <Reveal>
-              <div className="flex items-end justify-between gap-4 border-b border-border pb-6 sm:pb-7">
-                <h2>About Me</h2>
-                <p className="text-xl text-primary">( 01 )</p>
-              </div>
-            </Reveal>
+            <SectionHeading title="About Me" index={1} className="mb-0 md:mb-0" />
 
             <div className="grid items-center gap-10 pt-10 lg:grid-cols-[minmax(220px,0.42fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20 xl:pt-16">
               <div className="mx-auto hidden w-full max-w-[303px] lg:flex">

@@ -1,5 +1,6 @@
 import React from "react";
 import Reveal from "@/components/ui/reveal";
+import SectionHeading from "../section-heading";
 
 const ExperienceSec = () => {
   const experiences = [
@@ -44,19 +45,14 @@ const ExperienceSec = () => {
     <section>
       <div className="py-16 md:py-24 xl:py-32">
         <div className="container">
-          <Reveal>
-            <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 md:mb-16">
-              <h2>Experience</h2>
-              <p className="text-lg text-primary sm:text-xl">( 03 )</p>
-            </div>
-          </Reveal>
+          <SectionHeading title="Experience" index={2} />
 
           <div className="space-y-5 md:space-y-7">
             {experiences.map((exp, index) => (
               <Reveal key={index} delay={index * 100}>
                 <div className="grid gap-5 rounded-2xl border border-border bg-card p-5 sm:p-7 lg:grid-cols-[minmax(150px,0.85fr)_minmax(180px,1fr)_minmax(0,1.6fr)] lg:gap-8">
                   <div>
-                    <p className="mb-2 text-sm font-semibold text-primary">{exp.year}</p>
+                    <p className="mb-2 font-mono text-sm font-semibold text-primary">{exp.year}</p>
                     <h4 className="text-xl font-bold text-foreground">{exp.title}</h4>
                   </div>
 

@@ -37,11 +37,11 @@ const ContactBar = () => {
             {/* Social Items */}
             <div className="flex items-center justify-center gap-4 md:justify-end md:gap-2.5">
               {contactBar.socialItems.map((value, index) => (
-                <Link key={index} href={value.link}>
+                <Link key={index} href={value.link} target="_blank" rel="noreferrer" aria-label={value.name}>
                   <ThemeImage
                     src={value.icon}
                     darkSrc={value.icon?.replace(".svg", "-dark.svg")}
-                    alt={value.platform}
+                    alt=""
                     width={30}
                     height={30}
                     className="hover:opacity-80"

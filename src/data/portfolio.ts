@@ -1,5 +1,5 @@
 export type ContactItem = { type: "email" | "phone"; label: string; icon: string; link: string };
-export type SocialItem = { platform: string; icon: string; link: string };
+export type SocialItem = { platform: string; name: string; icon: string; link: string };
 export type EducationItem = { title: string; description: string };
 export type SkillItem = { title: string; description: string; technologies: string[] };
 export type ContactLink = { title: string; href: string };
@@ -8,6 +8,7 @@ export type ContactInfo = { type: "email" | "phone"; label: string; link: string
 export const EMAIL = "hariharan.ravichandran1004@gmail.com";
 export const PHONE = "+91 9384418654";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/haridev1004/";
+export const GITHUB_URL = "https://github.com/hari-devx";
 
 export const contactBar: { contactItems: ContactItem[]; socialItems: SocialItem[] } = {
   contactItems: [
@@ -27,8 +28,15 @@ export const contactBar: { contactItems: ContactItem[]; socialItems: SocialItem[
   socialItems: [
     {
       platform: "linkedin",
+      name: "LinkedIn",
       icon: "/images/icon/linkedin-icon.svg",
       link: LINKEDIN_URL,
+    },
+    {
+      platform: "github",
+      name: "GitHub",
+      icon: "/images/icon/github-icon.svg",
+      link: GITHUB_URL,
     },
   ],
 };
@@ -64,6 +72,6 @@ export const skills: SkillItem[] = [
 ];
 
 export const contactLinks: { socialLinks: ContactLink[]; contactInfo: ContactInfo[] } = {
-  socialLinks: [{ title: "LinkedIn", href: LINKEDIN_URL }],
+  socialLinks: contactBar.socialItems.map(({ name, link }) => ({ title: name, href: link })),
   contactInfo: contactBar.contactItems.map(({ type, label, link }) => ({ type, label, link })),
 };

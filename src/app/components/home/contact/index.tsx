@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Reveal from "@/components/ui/reveal";
+import SectionHeading from "../section-heading";
 import { Textarea } from "@/components/ui/textarea";
 import { EMAIL, contactLinks } from "@/data/portfolio";
 
@@ -49,12 +50,7 @@ const Contact = () => {
     <section className="no-print">
       <div className="container">
         <div className="pb-16 pt-16 sm:pb-20 md:pt-24 xl:pt-32">
-          <Reveal>
-            <div className="mb-9 flex items-center justify-between gap-2 border-b border-border pb-7 md:mb-16">
-              <h2>Contact Me</h2>
-              <p className="text-xl text-primary">( 05 )</p>
-            </div>
-          </Reveal>
+          <SectionHeading title="Contact Me" index={5} />
 
           <Reveal>
             <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:rounded-3xl">
@@ -107,7 +103,7 @@ const Contact = () => {
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Contact details</p>
                     <h4 className="mt-3 text-2xl font-semibold">Prefer a direct route?</h4>
-                    <p className="mt-3">Reach out by email or phone, or find me on LinkedIn.</p>
+                    <p className="mt-3">Reach out by email or phone, or find me on LinkedIn and GitHub.</p>
                   </div>
 
                   <div className="my-7 space-y-3 sm:my-10">
