@@ -9,14 +9,14 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border">
-      <div className="container flex flex-col items-center gap-6 py-10 sm:py-12 md:flex-row md:justify-between">
-        <div className="flex flex-col items-center gap-3 md:items-start">
+    <footer className="border-t border-border py-10 sm:py-12">
+      <div className="container flex flex-col items-center gap-6 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center gap-3 text-center md:items-start md:text-left">
           <Logo />
           <p className="text-sm text-muted-foreground">© 2026 Hariharan Ravichandran. All rights reserved.</p>
         </div>
 
-        <nav aria-label="Footer" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
+        <nav aria-label="Footer" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm md:justify-end">
           {links.map(({ label, href, external }) => (
             <a
               key={label}

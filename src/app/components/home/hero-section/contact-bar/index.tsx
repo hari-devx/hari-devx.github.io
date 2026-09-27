@@ -9,7 +9,7 @@ const ContactBar = () => {
         <div className="container">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 md:py-7">
             {/* Contact Items */}
-            <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center md:justify-start md:gap-5 lg:gap-11">
+            <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center md:justify-start md:gap-10 lg:gap-16">
               {contactBar.contactItems.map(
                 (value, index) => (
                   <Link

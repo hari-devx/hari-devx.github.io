@@ -38,7 +38,7 @@ const AboutMe = () => {
               </div>
             </Reveal>
 
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:self-center">
               {STATS.map((item, i) => (
                 <Reveal key={item.label} delay={i * 90}>
                   <div className="h-full rounded-2xl border border-border bg-background p-4 sm:p-6">
