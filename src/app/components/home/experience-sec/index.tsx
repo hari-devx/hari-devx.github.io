@@ -5,26 +5,17 @@ import SectionHeading from "../section-heading";
 const ExperienceSec = () => {
   const experiences = [
     {
-      year: "Mar 2025 - Present",
-      title: "Software Development Engineer - II",
+      year: "Mar 2023 - Oct 2026",
+      title: "Software Engineer",
       company: "Closerlook Digital",
       type: "Full-time",
       description: <>
-        Own <strong>backend delivery</strong> for infrastructure monitoring and real-time platform capabilities. Built <strong>Spring Boot services</strong> for server health, DNS resolution, and SSL-expiry visibility; designed REST and event-driven integrations used by a Flutter application serving <strong>500+ active assets</strong>. Raise engineering quality through <strong>code reviews and mentoring</strong> in close partnership with DevOps and QA.
-      </>,
-    },
-    {
-      year: "Mar 2023 - Mar 2025",
-      title: "Software Development Engineer - I",
-      company: "Closerlook Digital",
-      type: "Full-time",
-      description: <>
-        Delivered and maintained <strong>secure backend capabilities</strong> across a 500+ asset environment. Integrated REST APIs and real-time streams, investigated <strong>production issues in Linux</strong>, and improved data flows through disciplined debugging, logging, and <strong>root-cause analysis</strong>.
+        Own <strong>backend delivery</strong> for infrastructure monitoring and real-time platform capabilities. Built <strong>Spring Boot services</strong> for server health, DNS resolution, and SSL-expiry visibility; designed REST and event-driven integrations used by a Flutter application serving <strong>500+ active assets</strong>. Investigate <strong>production issues in Linux</strong> through disciplined debugging, logging, and <strong>root-cause analysis</strong>, and raise engineering quality through <strong>code reviews and mentoring</strong> in close partnership with DevOps and QA.
       </>,
     },
     {
       year: "Nov 2022 - Mar 2023",
-      title: "Software Development Engineer - Intern",
+      title: "Software Engineer - Intern",
       company: "Closerlook Digital",
       type: "Internship",
       description: <>

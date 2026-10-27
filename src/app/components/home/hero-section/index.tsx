@@ -3,7 +3,7 @@ import Reveal from "@/components/ui/reveal";
 import { Cursor, TerminalWindow } from "@/components/ui/terminal";
 
 const SESSION = [
-  { command: "whoami", output: "hariharan — software engineer II" },
+  { command: "whoami", output: "hariharan — software engineer" },
   { command: "cat stack.txt", output: "java · spring boot · kafka · aws" },
   { command: "uptime", output: "3+ years shipping backend systems" },
 ];
@@ -18,7 +18,7 @@ const HeroSection = () => {
           <Reveal className="flex max-w-2xl flex-col gap-4 md:gap-7">
             <div>
               <h1 className="whitespace-nowrap text-[8.4vw] sm:text-5xl xl:text-6xl 2xl:text-7xl">I&apos;m Hariharan</h1>
-              <h1 className="whitespace-nowrap text-[8.4vw] sm:text-5xl xl:text-6xl 2xl:text-7xl">Software Engineer II</h1>
+              <h1 className="whitespace-nowrap text-[8.4vw] sm:text-5xl xl:text-6xl 2xl:text-7xl">Software Engineer</h1>
             </div>
             <p className="max-w-md text-muted-foreground xl:max-w-xl">
               Backend-focused software engineer with 3+ years of experience designing reliable

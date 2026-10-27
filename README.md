@@ -8,7 +8,7 @@ This portfolio showcases my professional experience, technical skills, projects,
 
 ## 👨‍💻 About Me
 
-Hi, I'm **Hariharan**, a Software Development Engineer with nearly four years of experience in software development.
+Hi, I'm **Hariharan**, a Software Engineer with nearly four years of experience in software development.
 
 I specialize in building scalable applications and currently focus on:
 
